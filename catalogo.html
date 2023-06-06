@@ -22,7 +22,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg stroke p-0">
                 <h1> <a class="navbar-brand" href="index.html">
-                        <span class="fa fa-bell-o"></span> Drawing Graphics
+                        <span class="fa fa-bell-o"></span> Jewels and more
                     </a></h1>
                 <!-- if logo is image enable this   
         <a class="navbar-brand" href="#index.html">
@@ -47,19 +47,26 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="catalogo.html">Catalogo</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="cerrarS" href="index.html">Cerrar sesión</a>
+                        <li class="nav-item" id="cerrarS">
+
                         </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" id="cerrar"></a>
+                        </li>
+
 
              <script>
 
                         const usuario = document.getElementById("cerrar");
+                        const logIn = document.getElementById("cerrarS");
             
                         if (localStorage.getItem('mail')) {
                           const elemento = localStorage.getItem('mail');
                           usuario.innerHTML = '<li class="mx-md-2 mx-1"><a href="#" class="google"><span class="fa fa-user fa-lg"></span></a></li>'
+                          logIn.innerHTML = '<a class="nav-link" id="cerrarS" href="login.html">Cerrar Sesión</a>'
                         } else {
                           usuario.innerHTML = ""
+                          logIn.innerHTML = '<a class="nav-link" id="cerrarS" href="login.html">Iniciar Sesión</a>'
                         }
                       </script>
 
@@ -101,13 +108,14 @@
                                     <i class="gg-moon"></i>
                                 </div>
                             </label>
-                            <form class="carrito" action="#" method="post">
+                            <form class="carrito" action="login.html" method="post">
                                 <input type="hidden" name="cmd" value="_cart">
                                 <input type="hidden" name="add">
                                 <input type="hidden" name="shoe_item">
                                 <input type="hidden" name="amount">
                                 <button type="submit" class="cart"><img class="logo-cart" src="src/Joyas/shopping-cart.png" alt="" ><i aria-hidden="true"></i></button>
-                                <a href="#" data-toggle="modal" data-target="#myModal1"></a>
+                                <a href="#" data-toggle="modal"></a>
+
                             </form>
                         </div>
                     </nav>
@@ -513,7 +521,7 @@
 <footer class="py-5">
 <div class="container pt-md-5">
     <div class="footer-logo mb-lg-5 mb-4 text-center">
-    <a class="navbar-brand" href="index.html"><span class="fa fa-bell-o"></span> Drawing Graphics</a>
+    <a class="navbar-brand" href="index.html"><span class="fa fa-bell-o"></span> Jewels and more</a>
     <p>We want to provide you with a great experience. Your feedback helps us
         bring you more of the events you love and the service you expect.</p>
     </div>
@@ -525,8 +533,8 @@
             <li class="mx-md-2 mx-1"><a href="https://wa.me/message/GBELSTLL64NSO1" class="whatsapp"><span class="fab fa-whatsapp"></span></a></li>
             <li class="mx-md-2 mx-1"><a href="https://www.instagram.com/drw.26/" class="instagram"><span class="fab fa-instagram"></span></a></li> 
         </ul>
-        <p class="mt-4">Proyecto Final. Tienda Online | <a href="#"
-            target="=_blank"> Drawing Graphics
+        <p class="mt-4"> Tienda Online | <a href="#"
+            target="=_blank"> Jewels and more
           </a></p>
     </div>
     </div>
@@ -538,19 +546,20 @@
 	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 	<!-- //js -->
 	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
-	<script>
-		shoe.render();
-		shoe.cart.on('shoe_checkout', function (evt) {
-			var items, len, i;
-
-			if (this.subtotal() > 0) {
-				items = this.items();
-
-				for (i = 0, len = items.length; i < len; i++) { }
-			}
-		});
-	</script>
+    <script src="js/minicart.js"></script>
+    <script>
+      shoe.render();
+    
+      shoe.cart.on('shoe_checkout', function (evt) {
+        var items = this.items();
+        var productDetails = '';
+    
+        if (this.subtotal() > 0) {
+          // Mostrar mensaje de pago exitoso y detalles de productos y valor total
+          alert('Pago exitoso.\n' + '\nValor total pagado: ' + this.total());
+        }
+      });
+    </script>
   <!-- move top -->
   <button onclick="topFunction()" id="movetop" title="Go to top">
     &#10548;

@@ -1,13 +1,19 @@
-const modalOpen = document.querySelector('.modal-open');
-const modal = document.querySelector('#myModal1');
-const modalClose = document.querySelector('.modal-close');
+document.getElementById("autenticacion").addEventListener("submit", function (event) {
+  event.preventDefault(); // Evita que el formulario se envíe y la página se recargue
 
-modalOpen.addEventListener('click', (e) => {
-  e.preventDefault();
-  modal.classList.add('modal--show');
-});
+  var totalPagar = shoe.cart.total();
 
-modalClose.addEventListener('click', (e) => {
-  e.preventDefault();
-  modal.classList.remove('modal--show');
+  // Muestra el popup de pago exitoso con el valor total
+  Swal.fire({
+    title: "Pago exitoso",
+    text: "¡Gracias por tu compra! Valor total pagado: " + "$" + totalPagar + ".000",
+    icon: "success",
+    confirmButtonText: "Aceptar"
+  }).then(function () {
+    // Redirige a index.html después de hacer clic en "Aceptar"
+    window.location.href = "index.html";
+  });
+
+  // Restablece los campos del formulario
+  this.reset();
 });

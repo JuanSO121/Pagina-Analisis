@@ -1887,7 +1887,7 @@ var defaults = module.exports = {
 
     parent: (typeof document !== 'undefined') ? document.body : null,
 
-    action: 'catalogo.html',
+    action: '/login.html',
 
     target: '',
 

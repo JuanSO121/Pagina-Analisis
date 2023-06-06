@@ -20,12 +20,12 @@ form.addEventListener('submit', (e) => {
 
     const nombre = document.querySelector('#nombre').value;
     const telefono = document.querySelector('#telefono').value;
-    const correo = document.querySelector('#correo').value;
+    const correo = document.querySelector('#mail').value;
 
     const dirrecion = document.querySelector('#dirreción').value;
     const cedula = document.querySelector('#cedula').value;
     const contraseña = document.querySelector('#contraseña').value;
-
+    localStorage.setItem("mail",correo)
 
     console.log(nombre,telefono,correo,dirrecion,cedula,contraseña)
 
@@ -33,7 +33,7 @@ form.addEventListener('submit', (e) => {
     .then(userCredential => {
         console.log("sig")
         form.reset();
-
+        window.location.href = "./catalogo.html";
     });
 
 });

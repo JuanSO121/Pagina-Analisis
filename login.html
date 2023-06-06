@@ -14,6 +14,7 @@
   <link href="//fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="login.css">
   <link rel="stylesheet" href="css/cart.css">
+  
 </head>
 
 <body>    
@@ -21,7 +22,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg stroke p-0">
             <h1> <a class="navbar-brand" href="index.html">
-                    <span class="fa fa-bell-o"></span> Drawing Graphics
+                    <span class="fa fa-bell-o"></span> Jewels and more
                 </a></h1>
             <!-- if logo is image enable this   
     <a class="navbar-brand" href="#index.html">
@@ -45,8 +46,8 @@
                     <li class="nav-item @@catalogo__active">
                         <a class="nav-link" href="catalogo.html">Catalogo</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="cerrarS" href="login.html">Cerrar sesión</a>
+                    <li class="nav-item" id="cerrarS">
+
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" id="cerrar"></a>
@@ -58,14 +59,17 @@
                 
                 <script>
 
-                    const usuario = document.getElementById("cerrar");
-        
-                    if (localStorage.getItem('mail')) {
-                      const elemento = localStorage.getItem('mail');
-                      usuario.innerHTML = '<li class="mx-md-2 mx-1"><a href="#" class="google"><span class="fa fa-user fa-lg"></span></a></li>'
-                    } else {
-                      usuario.innerHTML = ""
-                    }
+                        const usuario = document.getElementById("cerrar");
+                        const logIn = document.getElementById("cerrarS");
+            
+                        if (localStorage.getItem('mail')) {
+                          const elemento = localStorage.getItem('mail');
+                          usuario.innerHTML = '<li class="mx-md-2 mx-1"><a href="#" class="google"><span class="fa fa-user fa-lg"></span></a></li>'
+                          logIn.innerHTML = '<a class="nav-link" id="cerrarS" href="login.html">Cerrar Sesión</a>'
+                        } else {
+                          usuario.innerHTML = ""
+                          logIn.innerHTML = '<a class="nav-link" id="cerrarS" href="login.html">Iniciar Sesión</a>'
+                        }
                   </script>
 
 
@@ -106,14 +110,15 @@
                                 <i class="gg-moon"></i>
                             </div>
                         </label>
-                        <form class="carrito" action="#" method="post">
-                            <input type="hidden" name="cmd" value="_cart">
-                            <input type="hidden" name="add">
-                            <input type="hidden" name="shoe_item">
-                            <input type="hidden" name="amount">
-                            <button type="submit" class="cart"><img class="logo-cart" src="src/Joyas/shopping-cart.png" alt="" ><i aria-hidden="true"></i></button>
-                            <a href="#" data-toggle="modal" data-target="#myModal1"></a>
-                        </form>
+                        <form class="carrito" action="login.html" method="post">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="add">
+                          <input type="hidden" name="shoe_item">
+                          <input type="hidden" name="amount">
+                          <button type="submit" class="cart"><img class="logo-cart" src="src/Joyas/shopping-cart.png" alt="" ><i aria-hidden="true"></i></button>
+                          <a href="#" data-toggle="modal"></a>
+
+                      </form>
                     </div>
                 </nav>
             </div>
@@ -140,11 +145,16 @@
             <input type="password" id="password" name="user_name" placeholder="************" required>
             <label for="name"><i class="fa fa-key fa-2x" aria-hidden="true"></i></label>
           </div>
-
+        
           <div class="imagen">
-            <button type="submit" class="slogin">Login</button>
+            <button type="submit" class="slogin">Iniciar sesión</button>
+          </div>
+        
+          <div class="imagen">
+            <a href="registro.html" class="sregister">Registrarse</a>
           </div>
         </form>
+        
 
         <div class="footer-grid">
           <div class="margen">
@@ -164,7 +174,8 @@
 
 
 
-  
+<!-- Agrega SweetAlert al final del archivo HTML -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="js/jquery-2.1.4.min.scriptjs"></script>
 
 <!-- js -->
@@ -294,6 +305,21 @@
           <p class="modal-close">Cerrar</p>
   </div>
 </section>
+
+<script src="js/minicart.js"></script>
+<script>
+  shoe.render();
+
+  shoe.cart.on('shoe_checkout', function (evt) {
+    var items = this.items();
+    var productDetails = '';
+
+    if (this.subtotal() > 0) {
+      // Mostrar mensaje de pago exitoso y detalles de productos y valor total
+      alert('Pago exitoso.\n' + '\nValor total pagado: ' + this.total());
+    }
+  });
+</script>
 </body>
 
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
